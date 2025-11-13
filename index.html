@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NomeArte - Crie o seu produto com personalidade</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Configuração de Cores e Fontes do Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              // Títulos e destaques
+              poppins: ["Poppins", "sans-serif"],
+              // Corpo e textos
+              nunito: ["Nunito", "sans-serif"],
+            },
+            colors: {
+              // Cores personalizadas da sua paleta
+              "brand-primary": "#FF6F61", // Laranja/Vermelho principal
+              "brand-secondary": "#F5A623", // Laranja/Amarelo botão
+              "brand-accent": "#4A90E2", // Azul botão e fundo
+              "brand-light": "#F8F8F8", // Fundo claro (quase branco)
+              "brand-dark": "#333333", // Footer e texto escuro
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Aplicando fontes base */
+      body {
+        font-family: "Nunito", sans-serif;
+        background-color: #f8f8f8;
+        color: #333;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- 1. Cabeçalho (Header) -->
+    <header class="bg-brand-light shadow-sm sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <!-- Logotipo -->
+        <a href="#" class="text-3xl font-poppins font-bold text-brand-dark">
+          Nome<span class="text-brand-primary">Arte</span>
+        </a>
+
+        <!-- Menu Principal (Desktop) -->
+        <ul class="hidden md:flex items-center space-x-6 font-semibold">
+          <li>
+            <a
+              href="#produtos"
+              class="hover:text-brand-primary transition-colors duration-200"
+              >Produtos</a
+            >
+          </li>
+          <li>
+            <a
+              href="#personalize"
+              class="hover:text-brand-primary transition-colors duration-200"
+              >Personalize</a
+            >
+          </li>
+          <li>
+            <a
+              href="#sobre"
+              class="hover:text-brand-primary transition-colors duration-200"
+              >Sobre</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contato"
+              class="hover:text-brand-primary transition-colors duration-200"
+              >Contato</a
+            >
+          </li>
+        </ul>
+
+        <!-- Ícones (Carrinho e Login) -->
+        <div class="flex items-center space-x-5">
+          <a
+            href="#"
+            class="text-brand-dark hover:text-brand-primary transition-colors duration-200"
+            aria-label="Carrinho"
+          >
+            <!-- Ícone de Carrinho (SVG) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="#"
+            class="text-brand-dark hover:text-brand-primary transition-colors duration-200"
+            aria-label="Login"
+          >
+            <!-- Ícone de Login (SVG) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+          <!-- Botão de Menu (Mobile) -->
+          <button class="md:hidden text-brand-dark" id="mobile-menu-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <!-- Menu Mobile (Oculto por padrão) -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-6 pb-4 space-y-2 text-center"
+      >
+        <li>
+          <a href="#produtos" class="block py-2 hover:text-brand-primary"
+            >Produtos</a
+          >
+        </li>
+        <li>
+          <a href="#personalize" class="block py-2 hover:text-brand-primary"
+            >Personalize</a
+          >
+        </li>
+        <li>
+          <a href="#sobre" class="block py-2 hover:text-brand-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="#contato" class="block py-2 hover:text-brand-primary"
+            >Contato</a
+          >
+        </li>
+      </div>
+    </header>
+
+    <main>
+      <!-- 2. Hero Section -->
+      <section
+        class="container mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center"
+      >
+        <!-- Coluna de Texto -->
+        <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+          <h1
+            class="text-5xl md:text-6xl font-poppins font-extrabold text-brand-dark leading-tight mb-6"
+          >
+            Crie o seu produto com
+            <span class="text-brand-primary">personalidade</span>.
+          </h1>
+          <p class="text-lg text-gray-600 mb-10 max-w-lg mx-auto md:mx-0">
+            Transforme suas ideias em itens únicos. De chaveiros a capinhas de
+            celular, o limite é a sua imaginação.
+          </p>
+          <!-- Botões -->
+          <div
+            class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
+          >
+            <a
+              href="#personalize"
+              class="px-8 py-3 bg-brand-secondary text-white font-bold rounded-full shadow-lg hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105"
+            >
+              Começar agora
+            </a>
+            <a
+              href="#produtos"
+              class="px-8 py-3 bg-brand-accent text-white font-bold rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-105"
+            >
+              Ver modelos
+            </a>
+          </div>
+        </div>
+        <!-- Coluna da Imagem -->
+        <div class="md:w-1/2">
+          <!-- Imagem de placeholder. Troque pela imagem dos seus produtos -->
+          <img
+            src="https://placehold.co/600x400/E0E0E0/999999?text=Produtos+Personalizados"
+            alt="Exemplos de produtos personalizados como chaveiros e capinhas de celular"
+            class="rounded-xl shadow-2xl w-full"
+          />
+        </div>
+      </section>
+
+      <!-- 3. Seção de Produtos em Destaque -->
+      <section id="produtos" class="bg-white py-20">
+        <div class="container mx-auto px-6">
+          <h2
+            class="text-4xl font-poppins font-bold text-center text-brand-dark mb-12"
+          >
+            Produtos em Destaque
+          </h2>
+          <!-- Grade de Produtos -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card de Produto (Exemplo 1) -->
+            <div
+              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <img
+                src="https://i.imgur.com/OF8lRfA.jpeg"
+                alt="Chaveiro Personalizado Beto"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold font-poppins mb-2">
+                  Chaveiro "Beto"
+                </h3>
+                <p class="text-lg font-semibold text-brand-primary mb-4">
+                  R$ 19,90
+                </p>
+                <a
+                  href="#personalize"
+                  class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
+                >
+                  Personalizar
+                </a>
+              </div>
+            </div>
+
+            <!-- Card de Produto (Exemplo 2) -->
+            <div
+              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <img
+                src="https://i.imgur.com/d1DBicc.jpeg"
+                alt="Chaveiro Personalizado Davi"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold font-poppins mb-2">
+                  Chaveiro "Davi"
+                </h3>
+                <p class="text-lg font-semibold text-brand-primary mb-4">
+                  R$ 19,90
+                </p>
+                <a
+                  href="#personalize"
+                  class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
+                >
+                  Personalizar
+                </a>
+              </div>
+            </div>
+
+            <!-- Card de Produto (Exemplo 3) -->
+            <div
+              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <img
+                src="https://placehold.co/400x300/F5A623/FFFFFF?text=Caneca"
+                alt="Caneca Personalizada"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold font-poppins mb-2">
+                  Caneca Mágica
+                </h3>
+                <p class="text-lg font-semibold text-brand-primary mb-4">
+                  R$ 49,90
+                </p>
+                <a
+                  href="#personalize"
+                  class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
+                >
+                  Personalizar
+                </a>
+              </div>
+            </div>
+
+            <!-- Card de Produto (Exemplo 4) -->
+            <div
+              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            >
+              <img
+                src="https://placehold.co/400x300/CCCCCC/FFFFFF?text=Camiseta"
+                alt="Camiseta Estampada"
+                class="w-full h-56 object-cover"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-bold font-poppins mb-2">
+                  Camiseta Estampada
+                </h3>
+                <p class="text-lg font-semibold text-brand-primary mb-4">
+                  R$ 59,90
+                </p>
+                <a
+                  href="#personalize"
+                  class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
+                >
+                  Personalizar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Personalização Interativa -->
+      <section id="personalize" class="bg-brand-light py-20">
+        <div class="container mx-auto px-6">
+          <h2
+            class="text-4xl font-poppins font-bold text-center text-brand-dark mb-12"
+          >
+            Personalize ao vivo!
+          </h2>
+          <div
+            class="flex flex-col md:flex-row bg-white p-8 md:p-12 rounded-xl shadow-xl items-center"
+          >
+            <!-- Preview 2D -->
+            <div
+              class="md:w-1/2 w-full flex justify-center items-center mb-8 md:mb-0"
+            >
+              <div class="relative w-72 h-40">
+                <!-- Base do Chaveiro (Exemplo) -->
+                <div
+                  class="absolute top-0 left-0 w-56 h-32 bg-gray-200 rounded-2xl shadow-inner flex items-center justify-center"
+                >
+                  <span
+                    id="keychain-preview"
+                    class="text-2xl font-poppins font-bold text-brand-dark truncate px-4"
+                  >
+                    SeuNome
+                  </span>
+                </div>
+                <!-- Argola do Chaveiro (Exemplo) -->
+                <div
+                  class="absolute top-1/2 -translate-y-1/2 left-48 w-16 h-16 border-8 border-gray-400 rounded-full"
+                ></div>
+                <div
+                  class="absolute top-1/2 -translate-y-1/2 left-44 w-8 h-2 bg-gray-400"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Opções de Personalização -->
+            <div class="md:w-1/2 w-full">
+              <div class="mb-6">
+                <label
+                  for="keychain-text"
+                  class="block text-lg font-semibold mb-2"
+                  >Digite seu texto:</label
+                >
+                <input
+                  type="text"
+                  id="keychain-text"
+                  placeholder="SeuNome"
+                  maxlength="10"
+                  class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                />
+                <small class="text-gray-500">Máximo de 10 caracteres.</small>
+              </div>
+              <div class="mb-6">
+                <label class="block text-lg font-semibold mb-2"
+                  >Escolha a cor:</label
+                >
+                <div class="flex space-x-3">
+                  <button
+                    class="w-10 h-10 rounded-full bg-brand-primary border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    data-color="#FF6F61"
+                  ></button>
+                  <button
+                    class="w-10 h-10 rounded-full bg-brand-accent border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    data-color="#4A90E2"
+                  ></button>
+                  <button
+                    class="w-10 h-10 rounded-full bg-brand-secondary border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    data-color="#F5A623"
+                  ></button>
+                  <button
+                    class="w-10 h-10 rounded-full bg-brand-dark border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    data-color="#333333"
+                  ></button>
+                  <button
+                    class="w-10 h-10 rounded-full bg-pink-400 border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    data-color="#F472B6"
+                  ></button>
+                </div>
+              </div>
+              <button
+                class="w-full px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300"
+              >
+                Adicionar ao Carrinho
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Avaliações e Depoimentos -->
+      <section id="sobre" class="bg-brand-accent py-20 text-white">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-4xl font-poppins font-bold mb-12">
+            O que nossos clientes dizem
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Depoimento 1 -->
+            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+              <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
+              <p class="text-lg italic mb-6">
+                "Amei meu chaveiro! A qualidade é incrível e chegou super
+                rápido. Exatamente como eu pedi!"
+              </p>
+              <p class="font-bold text-xl">- Maria S.</p>
+            </div>
+            <!-- Depoimento 2 -->
+            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+              <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
+              <p class="text-lg italic mb-6">
+                "A personalização é muito fácil de usar e o produto final ficou
+                perfeito. Virei cliente!"
+              </p>
+              <p class="font-bold text-xl">- João P.</p>
+            </div>
+            <!-- Depoimento 3 -->
+            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+              <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
+              <p class="text-lg italic mb-6">
+                "Comprei uma capinha de presente e foi sucesso total. Recomendo
+                demais a NomeArte."
+              </p>
+              <p class="font-bold text-xl">- Ana L.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 6. Rodapé (Footer) -->
+    <footer id="contato" class="bg-brand-dark text-brand-light py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Coluna 1: Logo e Social -->
+          <div>
+            <a href="#" class="text-3xl font-poppins font-bold text-white">
+              Nome<span class="text-brand-primary">Arte</span>
+            </a>
+            <p class="mt-4 text-gray-400">Sua ideia, nosso produto.</p>
+            <!-- Ícones de Redes Sociais -->
+            <div class="flex space-x-4 mt-6">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white"
+                aria-label="Instagram"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white"
+                aria-label="Facebook"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white"
+                aria-label="TikTok"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 14.3 20a8.6 8.6 0 0 1-5.6 0A8.5 8.5 0 0 1 3 15.3a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 4 7a8.5 8.5 0 0 1 10.3 0 8.5 8.5 0 0 1 6.7 4.5z"
+                  ></path>
+                  <path d="M12 12v4"></path>
+                  <path d="M10 10c.8-.8 1.6-1.4 2.5-1.7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Links Rápidos -->
+          <div>
+            <h4 class="text-xl font-poppins font-bold mb-4">Navegação</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#produtos" class="text-gray-400 hover:text-white"
+                  >Produtos</a
+                >
+              </li>
+              <li>
+                <a href="#personalize" class="text-gray-400 hover:text-white"
+                  >Personalize</a
+                >
+              </li>
+              <li>
+                <a href="#sobre" class="text-gray-400 hover:text-white"
+                  >Sobre Nós</a
+                >
+              </li>
+              <li>
+                <a href="#contato" class="text-gray-400 hover:text-white"
+                  >Contato</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Ajuda -->
+          <div>
+            <h4 class="text-xl font-poppins font-bold mb-4">Ajuda</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Política de Privacidade</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Termos de Uso</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white"
+                  >Rastrear Pedido</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 4: Contato -->
+          <div>
+            <h4 class="text-xl font-poppins font-bold mb-4">Contato</h4>
+            <p class="text-gray-400">contato@nomearte.com</p>
+            <p class="text-gray-400">(71) 99953-0935</p>
+            <p class="text-gray-400 mt-2">Rua Fictícia, 123 - São Paulo, SP</p>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500"
+        >
+          &copy; <span id="current-year"></span> NomeArte. Todos os direitos
+          reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script>
+      // --- Script para Personalização Interativa ---
+      const textInput = document.getElementById("keychain-text");
+      const previewText = document.getElementById("keychain-preview");
+
+      textInput.addEventListener("input", (e) => {
+        if (e.target.value) {
+          previewText.textContent = e.target.value;
+        } else {
+          previewText.textContent = "SeuNome"; // Texto padrão
+        }
+      });
+
+      // --- Script para Cores da Personalização ---
+      const colorButtons = document.querySelectorAll("[data-color]");
+      const previewBase = previewText.parentElement; // O div pai do texto
+
+      colorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const color = button.dataset.color;
+          previewBase.style.backgroundColor = color;
+          // Ajusta a cor do texto para contraste
+          if (color === "#333333") {
+            previewText.style.color = "#FFFFFF";
+          } else {
+            previewText.style.color = "#333333";
+          }
+        });
+      });
+
+      // --- Script para Menu Mobile ---
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // --- Script para Ano Atual no Footer ---
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
