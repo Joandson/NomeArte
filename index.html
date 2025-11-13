@@ -228,8 +228,8 @@
         <!-- Coluna da Imagem -->
         <div class="md:w-1/2">
           <img
-            src="https://placehold.co/600x400/E0E0E0/999999?text=Produtos+Personalizados"
-            alt="Exemplos de produtos personalizados como chaveiros e Nome Placa"
+            src="https://i.imgur.com/zO1MHYV.png"
+            alt="Coleção de Chaveiros Personalizados NomeArte"
             class="rounded-xl shadow-2xl w-full"
           />
         </div>
@@ -402,8 +402,9 @@
                   >Escolha a cor da Letra (borda preta):</label
                 >
                 <div class="flex space-x-3">
+                  <!-- <<< ALTERAÇÃO AQUI >>> -->
                   <button
-                    class="w-10 h-10 rounded-full bg-brand-primary border-2 border-transparent focus:border-brand-dark focus:outline-none"
+                    class="w-10 h-10 rounded-full bg-white border-2 border-gray-300 focus:border-brand-dark focus:outline-none"
                     data-color="#FFFFFF"
                   ></button>
                   <button
@@ -477,33 +478,83 @@
     <footer id="contato" class="bg-brand-dark text-brand-light py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Coluna 1 -->
           <div>
-            <a href="#" class="text-3xl font-poppins font-bold text-white"
-              >Nome<span class="text-brand-primary">Arte</span></a
-            >
+            <a href="#" class="text-3xl font-poppins font-bold text-white">
+              Nome<span class="text-brand-primary">Arte</span>
+            </a>
             <p class="mt-4 text-gray-400">Sua ideia, nosso produto.</p>
+
             <div class="flex space-x-4 mt-6">
+              <!-- Instagram -->
               <a
-                href="#"
-                class="text-gray-400 hover:text-white"
+                href="https://instagram.com"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition-colors"
                 aria-label="Instagram"
-                >...SVG...</a
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8 12a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm8.5-4.5h.01"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
               <a
-                href="#"
-                class="text-gray-400 hover:text-white"
+                href="https://facebook.com"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition-colors"
                 aria-label="Facebook"
-                >...SVG...</a
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5 3.66 9.13 8.44 9.93v-7.03H8.08v-2.9h2.36V9.41c0-2.33 1.38-3.63 3.5-3.63 1.01 0 2.07.18 2.07.18v2.28h-1.17c-1.16 0-1.52.72-1.52 1.46v1.76h2.58l-.41 2.9h-2.17v7.03C18.34 21.2 22 17.07 22 12.07z"
+                  />
+                </svg>
+              </a>
+
+              <!-- TikTok -->
               <a
-                href="#"
-                class="text-gray-400 hover:text-white"
+                href="https://tiktok.com"
+                target="_blank"
+                class="text-gray-400 hover:text-white transition-colors"
                 aria-label="TikTok"
-                >...SVG...</a
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M16.6 3.5c.6 2.2 2.1 3.7 4.4 4V10c-1.6-.1-3.1-.5-4.4-1.3v5.6c0 3.5-2.6 6.7-6.6 6.7-3.8 0-6.7-3-6.7-6.7 0-3.7 3-6.7 6.7-6.7.4 0 .8 0 1.2.1v3.2c-.4-.1-.8-.2-1.2-.2-2 0-3.5 1.6-3.5 3.6 0 2 1.6 3.6 3.5 3.6 1.9 0 3.5-1.5 3.5-3.6V2.8h3.1z"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
 
+          <!-- Coluna 2 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Navegação</h4>
             <ul class="space-y-2">
@@ -530,6 +581,7 @@
             </ul>
           </div>
 
+          <!-- Coluna 3 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Ajuda</h4>
             <ul class="space-y-2">
@@ -554,12 +606,13 @@
             </ul>
           </div>
 
+          <!-- Coluna 4 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Contato</h4>
             <p class="text-gray-400">joandsonisraelr@gmail.com</p>
             <p class="text-gray-400">(71) 99953-0935</p>
             <p class="text-gray-400 mt-2">
-              Av. Iguatemi, Mangabeira Feira de Santana
+              Av. Iguatemi, Mangabeira - Feira de Santana
             </p>
           </div>
         </div>
@@ -617,7 +670,6 @@
         new Date().getFullYear();
 
       // --- Script para Envio via WhatsApp ---
-      // IMPORTANTE: este bloco vem APÓS a definição de textInput (ordem correta)
       const whatsappButton = document.getElementById("whatsapp-button");
 
       whatsappButton.addEventListener("click", () => {
