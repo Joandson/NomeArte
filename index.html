@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -229,7 +228,7 @@
         <div class="md:w-1/2">
           <img
             src="https://i.imgur.com/zO1MHYV.png"
-            alt="Coleção de Chaveiros Personalizados NomeArte"
+            alt="Coleção de chaveiros personalizados com nomes"
             class="rounded-xl shadow-2xl w-full"
           />
         </div>
@@ -246,8 +245,12 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Card de Produto (Exemplo 1) -->
             <div
-              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              class="relative bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
+              <!-- Tag de Desconto (35% OFF) -->
+              <div class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6">
+                35% OFF
+              </div>
               <img
                 src="https://i.imgur.com/OF8lRfA.jpeg"
                 alt="Chaveiro Personalizado Davi"
@@ -257,9 +260,11 @@
                 <h3 class="text-xl font-bold font-poppins mb-2">
                   Chaveiro "Davi"
                 </h3>
-                <p class="text-lg font-semibold text-brand-primary mb-4">
-                  R$ 12,90
-                </p>
+                <!-- Preço Promocional com Destaque -->
+                <div class="mb-4">
+                  <p class="text-lg text-gray-500 line-through">De R$ 19,90</p>
+                  <p class="text-3xl font-bold text-brand-primary">Por R$ 12,90</p>
+                </div>
                 <a
                   href="#personalize"
                   class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
@@ -270,10 +275,14 @@
 
             <!-- Card de Produto (Exemplo 2) -->
             <div
-              class="bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              class="relative bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
+              <!-- Tag de Desconto (35% OFF) -->
+              <div class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6">
+                35% OFF
+              </div>
               <img
-                src="https://i.imgur.com/d1DBicc.jpeg"
+                src="https://i.imgur.com/ZBVOSPD.png"
                 alt="Chaveiro Personalizado Beto"
                 class="w-full h-56 object-cover"
               />
@@ -281,9 +290,11 @@
                 <h3 class="text-xl font-bold font-poppins mb-2">
                   Chaveiro "Beto"
                 </h3>
-                <p class="text-lg font-semibold text-brand-primary mb-4">
-                  R$ 12,90
-                </p>
+                <!-- Preço Promocional com Destaque -->
+                <div class="mb-4">
+                  <p class="text-lg text-gray-500 line-through">De R$ 19,90</p>
+                  <p class="text-3xl font-bold text-brand-primary">Por R$ 12,90</p>
+                </div>
                 <a
                   href="#personalize"
                   class="w-full text-center block px-5 py-2 bg-brand-primary text-white font-bold rounded-full shadow-md hover:bg-brand-secondary transition-all duration-300"
@@ -402,7 +413,7 @@
                   >Escolha a cor da Letra (borda preta):</label
                 >
                 <div class="flex space-x-3">
-                  <!-- <<< ALTERAÇÃO AQUI >>> -->
+                  <!-- Botão Branco -->
                   <button
                     class="w-10 h-10 rounded-full bg-white border-2 border-gray-300 focus:border-brand-dark focus:outline-none"
                     data-color="#FFFFFF"
@@ -478,15 +489,14 @@
     <footer id="contato" class="bg-brand-dark text-brand-light py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <!-- Coluna 1 -->
+          <!-- Coluna 1: Logo e Social -->
           <div>
             <a href="#" class="text-3xl font-poppins font-bold text-white">
               Nome<span class="text-brand-primary">Arte</span>
             </a>
             <p class="mt-4 text-gray-400">Sua ideia, nosso produto.</p>
-
+            <!-- Ícones de Redes Sociais -->
             <div class="flex space-x-4 mt-6">
-              <!-- Instagram -->
               <a
                 href="https://instagram.com"
                 target="_blank"
@@ -513,8 +523,6 @@
                   />
                 </svg>
               </a>
-
-              <!-- Facebook -->
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -532,8 +540,6 @@
                   />
                 </svg>
               </a>
-
-              <!-- TikTok -->
               <a
                 href="https://tiktok.com"
                 target="_blank"
@@ -554,7 +560,7 @@
             </div>
           </div>
 
-          <!-- Coluna 2 -->
+          <!-- Coluna 2: Links Rápidos -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Navegação</h4>
             <ul class="space-y-2">
@@ -581,13 +587,11 @@
             </ul>
           </div>
 
-          <!-- Coluna 3 -->
+          <!-- Coluna 3: Ajuda -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Ajuda</h4>
             <ul class="space-y-2">
-              <li>
-                <a href="#" class="text-gray-400 hover:text-white">FAQ</a>
-              </li>
+              <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
               <li>
                 <a href="#" class="text-gray-400 hover:text-white"
                   >Política de Privacidade</a
@@ -606,7 +610,7 @@
             </ul>
           </div>
 
-          <!-- Coluna 4 -->
+          <!-- Coluna 4: Contato -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Contato</h4>
             <p class="text-gray-400">joandsonisraelr@gmail.com</p>
@@ -628,10 +632,16 @@
 
     <!-- Scripts JavaScript -->
     <script>
-      // --- Script para Personalização Interativa ---
+      // --- Definição de Constantes (Melhor prática) ---
       const textInput = document.getElementById("keychain-text");
       const previewText = document.getElementById("keychain-preview");
+      const colorButtons = document.querySelectorAll("[data-color]");
+      const previewBase = previewText.parentElement; // O div pai do texto
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const whatsappButton = document.getElementById("whatsapp-button");
 
+      // --- Script para Personalização Interativa ---
       textInput.addEventListener("input", (e) => {
         if (e.target.value) {
           previewText.textContent = e.target.value;
@@ -641,9 +651,6 @@
       });
 
       // --- Script para Cores da Personalização ---
-      const colorButtons = document.querySelectorAll("[data-color]");
-      const previewBase = previewText.parentElement; // O div pai do texto
-
       colorButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const color = button.dataset.color;
@@ -658,9 +665,6 @@
       });
 
       // --- Script para Menu Mobile ---
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-
       mobileMenuButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
@@ -670,8 +674,6 @@
         new Date().getFullYear();
 
       // --- Script para Envio via WhatsApp ---
-      const whatsappButton = document.getElementById("whatsapp-button");
-
       whatsappButton.addEventListener("click", () => {
         const nome = textInput.value.trim() || "SeuNome";
         const mensagem = `Olá! Gostaria de fazer um pedido do chaveiro com o nome: ${nome}`;
