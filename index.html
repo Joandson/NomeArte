@@ -1,13 +1,18 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Loja de produtos personalizados únicos. Chaveiros, canecas e camisetas feitas para você."
+    />
     <title>NomeArte - Crie o seu produto com personalidade</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Otimizado com display=swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -50,6 +55,10 @@
       h6,
       .font-poppins {
         font-family: "Poppins", sans-serif;
+      }
+      /* Garante que imagens tenham altura automática para manter proporção */
+      img {
+        height: auto;
       }
     </style>
   </head>
@@ -145,7 +154,11 @@
             </svg>
           </a>
           <!-- Botão de Menu (Mobile) -->
-          <button class="md:hidden text-brand-dark" id="mobile-menu-button">
+          <button
+            class="md:hidden text-brand-dark"
+            id="mobile-menu-button"
+            aria-label="Abrir menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -192,9 +205,9 @@
     </header>
 
     <main>
-      <!-- 2. Hero Section -->
+      <!-- 2. Hero Section (Ajustado padding superior) -->
       <section
-        class="container mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row items-center"
+        class="container mx-auto px-6 py-8 md:py-12 flex flex-col md:flex-row items-center"
       >
         <!-- Coluna de Texto -->
         <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
@@ -226,10 +239,17 @@
         </div>
         <!-- Coluna da Imagem -->
         <div class="md:w-1/2">
+          <!-- OTIMIZAÇÃO: 
+               1. fetchpriority="high" avisa ao navegador que essa imagem é a mais importante (LCP).
+               2. width e height explícitos evitam layout shift.
+          -->
           <img
             src="https://i.imgur.com/zO1MHYV.png"
             alt="Coleção de chaveiros personalizados com nomes"
             class="rounded-xl shadow-2xl w-full"
+            width="600"
+            height="400"
+            fetchpriority="high"
           />
         </div>
       </section>
@@ -248,13 +268,19 @@
               class="relative bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <!-- Tag de Desconto (35% OFF) -->
-              <div class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6">
+              <div
+                class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6"
+              >
                 35% OFF
               </div>
+              <!-- OTIMIZAÇÃO: loading="lazy" para imagens fora da tela inicial -->
               <img
                 src="https://i.imgur.com/OF8lRfA.jpeg"
                 alt="Chaveiro Personalizado Davi"
                 class="w-full h-56 object-cover"
+                width="400"
+                height="300"
+                loading="lazy"
               />
               <div class="p-6">
                 <h3 class="text-xl font-bold font-poppins mb-2">
@@ -263,7 +289,9 @@
                 <!-- Preço Promocional com Destaque -->
                 <div class="mb-4">
                   <p class="text-lg text-gray-500 line-through">De R$ 19,90</p>
-                  <p class="text-3xl font-bold text-brand-primary">Por R$ 12,90</p>
+                  <p class="text-3xl font-bold text-brand-primary">
+                    Por R$ 12,90
+                  </p>
                 </div>
                 <a
                   href="#personalize"
@@ -278,13 +306,18 @@
               class="relative bg-brand-light rounded-xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
             >
               <!-- Tag de Desconto (35% OFF) -->
-              <div class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6">
+              <div
+                class="absolute top-3 right-3 bg-brand-primary text-white text-sm font-bold uppercase px-2 py-1 rounded-md z-10 transform -rotate-6"
+              >
                 35% OFF
               </div>
               <img
                 src="https://i.imgur.com/ZBVOSPD.png"
                 alt="Chaveiro Personalizado Beto"
                 class="w-full h-56 object-cover"
+                width="400"
+                height="300"
+                loading="lazy"
               />
               <div class="p-6">
                 <h3 class="text-xl font-bold font-poppins mb-2">
@@ -293,7 +326,9 @@
                 <!-- Preço Promocional com Destaque -->
                 <div class="mb-4">
                   <p class="text-lg text-gray-500 line-through">De R$ 19,90</p>
-                  <p class="text-3xl font-bold text-brand-primary">Por R$ 12,90</p>
+                  <p class="text-3xl font-bold text-brand-primary">
+                    Por R$ 12,90
+                  </p>
                 </div>
                 <a
                   href="#personalize"
@@ -311,6 +346,9 @@
                 src="https://i.imgur.com/WIsuNK5.png"
                 alt="Caneca Personalizada"
                 class="w-full h-56 object-cover"
+                width="400"
+                height="300"
+                loading="lazy"
               />
               <div class="p-6">
                 <h3 class="text-xl font-bold font-poppins mb-2">
@@ -335,6 +373,9 @@
                 src="https://i.imgur.com/6MRLPeH.jpeg"
                 alt="Camiseta Estampada"
                 class="w-full h-56 object-cover"
+                width="400"
+                height="300"
+                loading="lazy"
               />
               <div class="p-6">
                 <h3 class="text-xl font-bold font-poppins mb-2">
@@ -354,7 +395,7 @@
         </div>
       </section>
 
-      <!-- 4. Personalização Interativa -->
+      <!-- 4. Personalização Interativa (Com melhorias de UX) -->
       <section id="personalize" class="bg-brand-light py-20">
         <div class="container mx-auto px-6">
           <h2
@@ -405,7 +446,13 @@
                   maxlength="12"
                   class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
                 />
-                <small class="text-gray-500">Máximo de 12 caracteres.</small>
+                <!-- NOVO: Contador de caracteres para feedback inline -->
+                <div class="flex justify-between mt-1">
+                  <small class="text-gray-500">Máximo de 12 caracteres.</small>
+                  <small id="char-count" class="text-gray-500 font-semibold"
+                    >0/12</small
+                  >
+                </div>
               </div>
 
               <div class="mb-6">
@@ -437,26 +484,37 @@
                 </div>
               </div>
 
-              <!-- Botão que envia para o WhatsApp -->
+              <!-- Botão que envia para o WhatsApp (Com feedback de clique) -->
               <button
                 id="whatsapp-button"
-                class="w-full px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300"
+                class="w-full px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center"
               >
-                Enviar pelo WhatsApp
+                <span id="whatsapp-btn-text">Enviar pelo WhatsApp</span>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 5. Avaliações e Depoimentos -->
+      <!-- 5. Avaliações e Depoimentos (Com Avatares) -->
       <section id="sobre" class="bg-brand-accent py-20 text-white">
         <div class="container mx-auto px-6 text-center">
           <h2 class="text-4xl font-poppins font-bold mb-12">
             O que nossos clientes dizem
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+            <!-- Depoimento 1 -->
+            <div
+              class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
+            >
+              <img
+                src="https://placehold.co/80x80/FF6F61/FFFFFF?text=M"
+                alt="Maria"
+                width="80"
+                height="80"
+                loading="lazy"
+                class="rounded-full mb-4 border-4 border-white shadow-sm"
+              />
               <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
               <p class="text-lg italic mb-6">
                 "Amei meu chaveiro! A qualidade é incrível e chegou super
@@ -464,7 +522,18 @@
               </p>
               <p class="font-bold text-xl">- Maria S.</p>
             </div>
-            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+            <!-- Depoimento 2 -->
+            <div
+              class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
+            >
+              <img
+                src="https://placehold.co/80x80/F5A623/FFFFFF?text=J"
+                alt="João"
+                width="80"
+                height="80"
+                loading="lazy"
+                class="rounded-full mb-4 border-4 border-white shadow-sm"
+              />
               <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
               <p class="text-lg italic mb-6">
                 "A personalização é muito fácil de usar e o produto final ficou
@@ -472,7 +541,18 @@
               </p>
               <p class="font-bold text-xl">- João P.</p>
             </div>
-            <div class="bg-blue-600 p-8 rounded-xl shadow-lg">
+            <!-- Depoimento 3 -->
+            <div
+              class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
+            >
+              <img
+                src="https://placehold.co/80x80/333333/FFFFFF?text=A"
+                alt="Ana"
+                width="80"
+                height="80"
+                loading="lazy"
+                class="rounded-full mb-4 border-4 border-white shadow-sm"
+              />
               <div class="text-4xl text-yellow-400 mb-4">★★★★★</div>
               <p class="text-lg italic mb-6">
                 "Comprei uma camisa de presente e foi sucesso total. Recomendo
@@ -591,7 +671,9 @@
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Ajuda</h4>
             <ul class="space-y-2">
-              <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white">FAQ</a>
+              </li>
               <li>
                 <a href="#" class="text-gray-400 hover:text-white"
                   >Política de Privacidade</a
@@ -632,21 +714,39 @@
 
     <!-- Scripts JavaScript -->
     <script>
-      // --- Definição de Constantes (Melhor prática) ---
+      // --- Definição de Constantes ---
       const textInput = document.getElementById("keychain-text");
       const previewText = document.getElementById("keychain-preview");
       const colorButtons = document.querySelectorAll("[data-color]");
-      const previewBase = previewText.parentElement; // O div pai do texto
+      const previewBase = previewText.parentElement;
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       const whatsappButton = document.getElementById("whatsapp-button");
+      const whatsappBtnText = document.getElementById("whatsapp-btn-text");
+      const charCount = document.getElementById("char-count"); // Contador de caracteres
 
-      // --- Script para Personalização Interativa ---
+      // --- Script para Personalização Interativa e Contador ---
       textInput.addEventListener("input", (e) => {
+        const currentLength = e.target.value.length;
+        const maxLength = e.target.getAttribute("maxlength");
+
+        // Atualiza o texto do preview
         if (e.target.value) {
           previewText.textContent = e.target.value;
         } else {
           previewText.textContent = "SeuNome"; // Texto padrão
+        }
+
+        // Atualiza o contador de caracteres (Feedback Inline)
+        charCount.textContent = `${currentLength}/${maxLength}`;
+
+        // Feedback visual se chegar no limite (cor vermelha)
+        if (currentLength >= maxLength) {
+          charCount.classList.add("text-red-500");
+          charCount.classList.remove("text-gray-500");
+        } else {
+          charCount.classList.remove("text-red-500");
+          charCount.classList.add("text-gray-500");
         }
       });
 
@@ -655,7 +755,6 @@
         button.addEventListener("click", () => {
           const color = button.dataset.color;
           previewBase.style.backgroundColor = color;
-          // Ajusta a cor do texto para contraste
           if (color === "#333333") {
             previewText.style.color = "#FFFFFF";
           } else {
@@ -673,14 +772,31 @@
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
 
-      // --- Script para Envio via WhatsApp ---
+      // --- Script para Envio via WhatsApp com Feedback ---
       whatsappButton.addEventListener("click", () => {
         const nome = textInput.value.trim() || "SeuNome";
         const mensagem = `Olá! Gostaria de fazer um pedido do chaveiro com o nome: ${nome}`;
         const link = `https://w.app/jf2kjt?text=${encodeURIComponent(
           mensagem
         )}`;
-        window.open(link, "_blank");
+
+        // Feedback visual imediato (Melhora UX)
+        const originalText = whatsappBtnText.innerText;
+        whatsappBtnText.innerText = "Redirecionando...";
+        whatsappButton.classList.remove("bg-green-500", "hover:bg-green-600");
+        whatsappButton.classList.add("bg-green-700"); // Cor mais escura para indicar clique
+
+        // Pequeno delay para o usuário ler a mensagem antes de abrir a nova aba
+        setTimeout(() => {
+          window.open(link, "_blank");
+
+          // Restaura o botão depois que o usuário volta (ou imediatamente)
+          setTimeout(() => {
+            whatsappBtnText.innerText = originalText;
+            whatsappButton.classList.add("bg-green-500", "hover:bg-green-600");
+            whatsappButton.classList.remove("bg-green-700");
+          }, 2000);
+        }, 800);
       });
     </script>
   </body>
