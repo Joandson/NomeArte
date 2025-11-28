@@ -36,6 +36,9 @@
               "brand-light": "#F8F8F8",
               "brand-dark": "#333333",
             },
+            animation: {
+              "bounce-slow": "bounce 3s infinite",
+            },
           },
         },
       };
@@ -63,9 +66,11 @@
     </style>
   </head>
 
-  <body class="antialiased">
+  <body class="antialiased pb-20 md:pb-0">
+    <!-- Padding bottom extra no mobile para o botão não cobrir conteúdo -->
+
     <!-- 1. Cabeçalho (Header) -->
-    <header class="bg-brand-light shadow-sm sticky top-0 z-50">
+    <header class="bg-brand-light shadow-sm sticky top-0 z-40">
       <nav
         class="container mx-auto px-6 py-4 flex justify-between items-center"
       >
@@ -239,10 +244,6 @@
         </div>
         <!-- Coluna da Imagem -->
         <div class="md:w-1/2">
-          <!-- OTIMIZAÇÃO: 
-               1. fetchpriority="high" avisa ao navegador que essa imagem é a mais importante (LCP).
-               2. width e height explícitos evitam layout shift.
-          -->
           <img
             src="https://i.imgur.com/zO1MHYV.png"
             alt="Coleção de chaveiros personalizados com nomes"
@@ -273,7 +274,6 @@
               >
                 35% OFF
               </div>
-              <!-- OTIMIZAÇÃO: loading="lazy" para imagens fora da tela inicial -->
               <img
                 src="https://i.imgur.com/OF8lRfA.jpeg"
                 alt="Chaveiro Personalizado Davi"
@@ -395,7 +395,7 @@
         </div>
       </section>
 
-      <!-- 4. Personalização Interativa (Com melhorias de UX) -->
+      <!-- 4. Personalização Interativa (Largura Ajustada) -->
       <section id="personalize" class="bg-brand-light py-20">
         <div class="container mx-auto px-6">
           <h2
@@ -410,23 +410,25 @@
             <div
               class="md:w-1/2 w-full flex justify-center items-center mb-8 md:mb-0"
             >
-              <div class="relative w-72 h-40">
-                <!-- Base do Chaveiro (Exemplo) -->
+              <!-- Aumentei o container para w-96 (24rem) para caber o chaveiro maior -->
+              <div class="relative w-96 h-40">
+                <!-- Base do Chaveiro (Aumentada para w-64/16rem) -->
                 <div
-                  class="absolute top-0 left-0 w-56 h-32 bg-gray-200 rounded-2xl shadow-inner flex items-center justify-center"
+                  class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-24 bg-black rounded-2xl shadow-inner flex items-center justify-center"
                 >
                   <span
                     id="keychain-preview"
-                    class="text-2xl font-poppins font-bold text-brand-dark truncate px-4"
+                    class="text-2xl font-poppins font-bold text-white truncate px-4"
                     >Seu Nome</span
                   >
                 </div>
-                <!-- Argola do Chaveiro (Exemplo) -->
+                <!-- Argola do Chaveiro (Movida para a direita: left-[15.5rem]) -->
                 <div
-                  class="absolute top-1/2 -translate-y-1/2 left-48 w-16 h-16 border-8 border-gray-400 rounded-full"
+                  class="absolute top-1/2 -translate-y-1/2 left-[15.5rem] w-16 h-16 border-8 border-gray-400 rounded-full"
                 ></div>
+                <!-- Conector do Chaveiro (Movido para a direita: left-[14.5rem]) -->
                 <div
-                  class="absolute top-1/2 -translate-y-1/2 left-44 w-8 h-2 bg-gray-400"
+                  class="absolute top-1/2 -translate-y-1/2 left-[14.5rem] w-8 h-2 bg-gray-400"
                 ></div>
               </div>
             </div>
@@ -439,14 +441,17 @@
                   class="block text-lg font-semibold mb-2"
                   >Digite seu texto:</label
                 >
-                <input
-                  type="text"
-                  id="keychain-text"
-                  placeholder="SeuNome"
-                  maxlength="12"
-                  class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
-                />
-                <!-- NOVO: Contador de caracteres para feedback inline -->
+                <div class="flex gap-2">
+                  <input
+                    type="text"
+                    id="keychain-text"
+                    placeholder="SeuNome"
+                    maxlength="12"
+                    class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                  />
+                </div>
+
+                <!-- Feedback Inline -->
                 <div class="flex justify-between mt-1">
                   <small class="text-gray-500">Máximo de 12 caracteres.</small>
                   <small id="char-count" class="text-gray-500 font-semibold"
@@ -457,7 +462,7 @@
 
               <div class="mb-6">
                 <label class="block text-lg font-semibold mb-2"
-                  >Escolha a cor da Letra (borda preta):</label
+                  >Escolha a cor da Letra:</label
                 >
                 <div class="flex space-x-3">
                   <!-- Botão Branco -->
@@ -473,10 +478,7 @@
                     class="w-10 h-10 rounded-full bg-brand-secondary border-2 border-transparent focus:border-brand-dark focus:outline-none"
                     data-color="#F5A623"
                   ></button>
-                  <button
-                    class="w-10 h-10 rounded-full bg-brand-dark border-2 border-transparent focus:border-brand-dark focus:outline-none"
-                    data-color="#333333"
-                  ></button>
+                  <!-- Botão PRETO REMOVIDO DAQUI -->
                   <button
                     class="w-10 h-10 rounded-full bg-pink-400 border-2 border-transparent focus:border-brand-dark focus:outline-none"
                     data-color="#F472B6"
@@ -484,7 +486,7 @@
                 </div>
               </div>
 
-              <!-- Botão que envia para o WhatsApp (Com feedback de clique) -->
+              <!-- Botão Original que envia para o WhatsApp -->
               <button
                 id="whatsapp-button"
                 class="w-full px-8 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center"
@@ -496,14 +498,13 @@
         </div>
       </section>
 
-      <!-- 5. Avaliações e Depoimentos (Com Avatares) -->
+      <!-- 5. Avaliações e Depoimentos -->
       <section id="sobre" class="bg-brand-accent py-20 text-white">
         <div class="container mx-auto px-6 text-center">
           <h2 class="text-4xl font-poppins font-bold mb-12">
             O que nossos clientes dizem
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Depoimento 1 -->
             <div
               class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
             >
@@ -522,7 +523,6 @@
               </p>
               <p class="font-bold text-xl">- Maria S.</p>
             </div>
-            <!-- Depoimento 2 -->
             <div
               class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
             >
@@ -541,7 +541,6 @@
               </p>
               <p class="font-bold text-xl">- João P.</p>
             </div>
-            <!-- Depoimento 3 -->
             <div
               class="bg-blue-600 p-8 rounded-xl shadow-lg flex flex-col items-center"
             >
@@ -569,14 +568,15 @@
     <footer id="contato" class="bg-brand-dark text-brand-light py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <!-- Coluna 1: Logo e Social -->
+          <!-- Coluna 1 -->
           <div>
             <a href="#" class="text-3xl font-poppins font-bold text-white">
               Nome<span class="text-brand-primary">Arte</span>
             </a>
             <p class="mt-4 text-gray-400">Sua ideia, nosso produto.</p>
-            <!-- Ícones de Redes Sociais -->
+
             <div class="flex space-x-4 mt-6">
+              <!-- Instagram -->
               <a
                 href="https://instagram.com"
                 target="_blank"
@@ -603,6 +603,7 @@
                   />
                 </svg>
               </a>
+              <!-- Facebook -->
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -620,6 +621,7 @@
                   />
                 </svg>
               </a>
+              <!-- TikTok -->
               <a
                 href="https://tiktok.com"
                 target="_blank"
@@ -640,7 +642,7 @@
             </div>
           </div>
 
-          <!-- Coluna 2: Links Rápidos -->
+          <!-- Coluna 2 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Navegação</h4>
             <ul class="space-y-2">
@@ -667,7 +669,7 @@
             </ul>
           </div>
 
-          <!-- Coluna 3: Ajuda -->
+          <!-- Coluna 3 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Ajuda</h4>
             <ul class="space-y-2">
@@ -692,7 +694,7 @@
             </ul>
           </div>
 
-          <!-- Coluna 4: Contato -->
+          <!-- Coluna 4 -->
           <div>
             <h4 class="text-xl font-poppins font-bold mb-4">Contato</h4>
             <p class="text-gray-400">joandsonisraelr@gmail.com</p>
@@ -712,6 +714,31 @@
       </div>
     </footer>
 
+    <!-- NOVO: Botão Flutuante (Sticky Button) - Comprar Agora -->
+    <div class="fixed bottom-6 right-6 z-50">
+      <button
+        id="sticky-buy-button"
+        class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-1 animate-bounce-slow"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+          ></path>
+        </svg>
+        Comprar Agora
+      </button>
+    </div>
+
     <!-- Scripts JavaScript -->
     <script>
       // --- Definição de Constantes ---
@@ -723,24 +750,15 @@
       const mobileMenu = document.getElementById("mobile-menu");
       const whatsappButton = document.getElementById("whatsapp-button");
       const whatsappBtnText = document.getElementById("whatsapp-btn-text");
-      const charCount = document.getElementById("char-count"); // Contador de caracteres
+      const charCount = document.getElementById("char-count");
+      const stickyBuyButton = document.getElementById("sticky-buy-button"); // Novo botão
 
-      // --- Script para Personalização Interativa e Contador ---
-      textInput.addEventListener("input", (e) => {
-        const currentLength = e.target.value.length;
-        const maxLength = e.target.getAttribute("maxlength");
-
-        // Atualiza o texto do preview
-        if (e.target.value) {
-          previewText.textContent = e.target.value;
-        } else {
-          previewText.textContent = "SeuNome"; // Texto padrão
-        }
-
-        // Atualiza o contador de caracteres (Feedback Inline)
+      // --- Funções Auxiliares ---
+      function updateCharCount(text) {
+        const currentLength = text.length;
+        const maxLength = textInput.getAttribute("maxlength");
         charCount.textContent = `${currentLength}/${maxLength}`;
 
-        // Feedback visual se chegar no limite (cor vermelha)
         if (currentLength >= maxLength) {
           charCount.classList.add("text-red-500");
           charCount.classList.remove("text-gray-500");
@@ -748,56 +766,71 @@
           charCount.classList.remove("text-red-500");
           charCount.classList.add("text-gray-500");
         }
+      }
+
+      function updatePreview(text) {
+        if (text) {
+          previewText.textContent = text;
+        } else {
+          previewText.textContent = "SeuNome";
+        }
+        updateCharCount(text || "");
+      }
+
+      // Função Centralizada para Enviar WhatsApp
+      function enviarPedidoWhatsApp() {
+        const nome = textInput.value.trim() || "SeuNome";
+        const mensagem = `Olá! Gostaria de fazer um pedido do chaveiro com o nome: ${nome}`;
+        // Atualizado para o link direto do WhatsApp (wa.me)
+        const link = `https://wa.me/5571999530935?text=${encodeURIComponent(
+          mensagem
+        )}`;
+
+        // Feedback visual (apenas no botão principal, se foi ele que clicou, mas simplificaremos para abrir direto)
+        window.open(link, "_blank");
+      }
+
+      // --- Event Listeners Existentes ---
+      textInput.addEventListener("input", (e) => {
+        updatePreview(e.target.value);
       });
 
       // --- Script para Cores da Personalização ---
+      // Muda a COR DO TEXTO e não o fundo
       colorButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const color = button.dataset.color;
-          previewBase.style.backgroundColor = color;
-          if (color === "#333333") {
-            previewText.style.color = "#FFFFFF";
-          } else {
-            previewText.style.color = "#333333";
-          }
+          previewText.style.color = color;
         });
       });
 
-      // --- Script para Menu Mobile ---
       mobileMenuButton.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
 
-      // --- Script para Ano Atual no Footer ---
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
 
-      // --- Script para Envio via WhatsApp com Feedback ---
+      // --- Script para Envio via WhatsApp (Botão Principal) ---
       whatsappButton.addEventListener("click", () => {
-        const nome = textInput.value.trim() || "SeuNome";
-        const mensagem = `Olá! Gostaria de fazer um pedido do chaveiro com o nome: ${nome}`;
-        const link = `https://w.app/jf2kjt?text=${encodeURIComponent(
-          mensagem
-        )}`;
-
-        // Feedback visual imediato (Melhora UX)
         const originalText = whatsappBtnText.innerText;
         whatsappBtnText.innerText = "Redirecionando...";
         whatsappButton.classList.remove("bg-green-500", "hover:bg-green-600");
-        whatsappButton.classList.add("bg-green-700"); // Cor mais escura para indicar clique
+        whatsappButton.classList.add("bg-green-700");
 
-        // Pequeno delay para o usuário ler a mensagem antes de abrir a nova aba
         setTimeout(() => {
-          window.open(link, "_blank");
-
-          // Restaura o botão depois que o usuário volta (ou imediatamente)
+          enviarPedidoWhatsApp();
+          // Restaura o botão
           setTimeout(() => {
             whatsappBtnText.innerText = originalText;
             whatsappButton.classList.add("bg-green-500", "hover:bg-green-600");
             whatsappButton.classList.remove("bg-green-700");
-          }, 2000);
-        }, 800);
+          }, 1000);
+        }, 500);
       });
+
+      // --- Script para Envio via WhatsApp (Botão Sticky) ---
+      stickyBuyButton.addEventListener("click", enviarPedidoWhatsApp);
     </script>
   </body>
 </html>
